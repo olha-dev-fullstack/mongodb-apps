@@ -18,7 +18,7 @@ class ProductEditPage extends Component {
     // Will be "edit" or "add"
     if (this.props.match.params.mode === 'edit') {
       axios
-        .get('http://localhost:3100/products/' + this.props.match.params.id)
+        .get(`${process.env.REACT_APP_BACKEND}/products/` + this.props.match.params.id)
         .then(productResponse => {
           const product = productResponse.data;
           this.setState({
@@ -58,12 +58,12 @@ class ProductEditPage extends Component {
     let request;
     if (this.props.match.params.mode === 'edit') {
       request = axios.patch(
-        'http://localhost:3100/products/' + this.props.match.params.id,
+        `${process.env.REACT_APP_BACKEND}/products/` + this.props.match.params.id,
         productData
       );
     } else {
       console.log(productData);
-      request = axios.post('http://localhost:3100/products', productData);
+      request = axios.post(`${process.env.REACT_APP_BACKEND}/products`, productData);
     }
     request
       .then(result => {

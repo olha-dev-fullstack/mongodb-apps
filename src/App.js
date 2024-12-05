@@ -28,9 +28,9 @@ class App extends Component {
     }
     let request;
     if (this.state.authMode === 'login') {
-      request = axios.post('http://localhost:3100/login', authData);
+      request = axios.post(`${process.env.REACT_APP_BACKEND}/login`, authData);
     } else {
-      request = axios.post('http://localhost:3100/signup', authData);
+      request = axios.post(`${process.env.REACT_APP_BACKEND}/signup`, authData);
     }
     request
       .then(authResponse => {

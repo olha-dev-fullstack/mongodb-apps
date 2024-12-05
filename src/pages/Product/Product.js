@@ -8,7 +8,7 @@ class ProductPage extends Component {
 
   componentDidMount() {
     axios
-      .get('http://localhost:3100/products/' + this.props.match.params.id)
+      .get(`${process.env.REACT_APP_BACKEND}/products/` + this.props.match.params.id)
       .then(productResponse => {
         this.setState({ isLoading: false, product: productResponse.data });
       })

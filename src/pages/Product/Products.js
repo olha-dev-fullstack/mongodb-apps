@@ -11,7 +11,7 @@ class ProductsPage extends Component {
 
   productDeleteHandler = (productId) => {
     axios
-      .delete("http://localhost:3100/products/" + productId)
+      .delete(`${process.env.REACT_APP_BACKEND}/products/` + productId)
       .then((result) => {
         console.log(result);
         this.fetchData();
@@ -26,7 +26,7 @@ class ProductsPage extends Component {
 
   fetchData = () => {
     axios
-      .get("http://localhost:3100/products")
+      .get(`${process.env.REACT_APP_BACKEND}/products`)
       .then((productsResponse) => {
         this.setState({ isLoading: false, products: productsResponse.data });
       })
